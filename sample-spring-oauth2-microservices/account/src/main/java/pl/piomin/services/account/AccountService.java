@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 public class AccountService {
 
 	public static void main(String[] args) {
+		System.out.println("Inside Account Microservice");
 		SpringApplication.run(AccountService.class, args);
 	}
 
