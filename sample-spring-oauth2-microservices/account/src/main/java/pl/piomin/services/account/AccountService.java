@@ -18,11 +18,11 @@ public class AccountService {
 		System.out.println("Inside Account Microservice");
 		SpringApplication.run(AccountService.class, args);
 	}
-
-/*	@Bean
+/*
+	@Bean
 	public DataSource dataSource() {
 		return DataSourceBuilder.create().url("jdbc:mysql://localhost:3306/oauth2?useSSL=false")
 				.username("root").password("root").driverClassName("com.mysql.jdbc.Driver").build();
-	}
-	*/
+	}*/
+	
 }

@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -43,6 +44,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() 
       throws Exception {
         return super.authenticationManagerBean();
+    }
+    
+    protected void configure(HttpSecurity httpSecurity) throws Exception
+    {
+    httpSecurity.requiresChannel().anyRequest().requiresSecure()
+    // Configures url based authorization
+    .and().authorizeRequests()
+    // Anyone can access the urls
+    .antMatchers("/auth/**", "/login", "/signup", "/forgotPassword").permitAll()
+    // The rest of the our application is protected.
+    .anyRequest().hasAnyRole("ANONYMOUS, USER")
+    // Configures form login
+    .and().formLogin().loginPage("/login").failureUrl("/login?error=bad_credentials")
+    // Configures the logout function
+    .and().rememberMe().tokenValiditySeconds(1209600);
     }
 
 }

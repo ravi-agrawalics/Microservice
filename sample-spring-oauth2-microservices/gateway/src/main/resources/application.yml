@@ -38,8 +38,8 @@ eureka:
 
 security:
   user:
-    name: root
-    password: password
+    name: piomin
+    password: piot1234
   oauth2:
     client:
       accessTokenUri: http://localhost:8765/uua/oauth/token
