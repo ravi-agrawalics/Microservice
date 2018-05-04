@@ -9,16 +9,33 @@ logging:
   level:
     org.springframework.security: TRACE
       
-security:
+#security:
 #  user:
 #    name: root
 #    password: password
-  oauth2:
-    resource:
+#  oauth2:
+#    resource:
 #      loadBalanced: true
-      userInfoUri: http://localhost:9999/user
+#      userInfoUri: http://localhost:9999/user
       
-eureka:
+eureka:  
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${vcap.services.eureka-service.credentials.uri:http://127.0.0.1:8761}/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1000
+    leaseExpirationDurationInSeconds: 2000
+    
+    
+security:
+  user:
+    password: none
+  oauth2:
+    client:
+      client-id: account-service
+      client-secret: secret
+      scope: read
+      access-token-uri: http://localhost:9999/oauth/token
+      user-authorization-uri: http://localhost:9999/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:9999/oauth/check_token     
