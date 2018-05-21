@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
+//import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.Authentication;
@@ -20,9 +20,9 @@ import org.springframework.security.oauth2.client.token.grant.code.Authorization
 import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordResourceDetails;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 
-import feign.Logger;
-import feign.RequestInterceptor;
-import feign.RequestTemplate;
+//import feign.Logger;
+//import feign.RequestInterceptor;
+//import feign.RequestTemplate;
 
 public class AccountClientConfiguration {
 
@@ -41,10 +41,10 @@ public class AccountClientConfiguration {
 	@Autowired
 	private OAuth2ProtectedResourceDetails resource;
 
-	@Bean
+	/*@Bean
 	RequestInterceptor oauth2FeignRequestInterceptor() {
 		return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), resource());
-	}
+	}*/
 
 /*	@Bean
 	public RequestInterceptor requestTokenBearerInterceptor() {
@@ -60,11 +60,11 @@ public class AccountClientConfiguration {
 
 	    };
 	}*/
-	
+/*	
 	@Bean
 	Logger.Level feignLoggerLevel() {
 		return Logger.Level.FULL;
-	}
+	}*/
 
 	private OAuth2ProtectedResourceDetails resource() {
 		ResourceOwnerPasswordResourceDetails resourceDetails = new ResourceOwnerPasswordResourceDetails();

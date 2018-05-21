@@ -9,13 +9,13 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
-import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
+//import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 
 @SpringBootApplication
 @EnableZuulProxy
-@EnableOAuth2Sso
+//@EnableOAuth2Sso
 @EnableDiscoveryClient
-@EnableJdbcHttpSession
+//@EnableJdbcHttpSession
 public class GatewayServer {
 
 	public static void main(String[] args) {
@@ -27,4 +27,22 @@ public class GatewayServer {
 		return DataSourceBuilder.create().url("jdbc:mysql://localhost:3306/oauth2?useSSL=false")
 				.username("root").password("root").driverClassName("com.mysql.jdbc.Driver").build();
 	}
+	
+/*	@Bean
+	public CorsFilter corsFilter() {
+	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	    final CorsConfiguration config = new CorsConfiguration();
+	    config.setAllowCredentials(true);
+	    config.addAllowedOrigin("*");
+	    config.addAllowedHeader("*");
+	    config.addAllowedMethod("OPTIONS");
+	    config.addAllowedMethod("HEAD");
+	    config.addAllowedMethod("GET");
+	    config.addAllowedMethod("PUT");
+	    config.addAllowedMethod("POST");
+	    config.addAllowedMethod("DELETE");
+	    config.addAllowedMethod("PATCH");
+	    source.registerCorsConfiguration("/**", config);
+	    return new CorsFilter(source);
+	}*/
 }

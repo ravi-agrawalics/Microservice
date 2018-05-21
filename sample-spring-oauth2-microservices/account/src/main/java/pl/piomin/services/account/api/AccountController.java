@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.piomin.services.account.model.Account;
@@ -17,14 +17,14 @@ import pl.piomin.services.account.model.Account;
 public class AccountController {
 
 
-	@GetMapping("/{id}")
+	@RequestMapping("/{id}")
 	@PreAuthorize("#oauth2.hasScope('read')")
 	public Account findAccount(@PathVariable("id") Integer id) {
 		System.out.println("FindAccount success");
 		return new Account(id, 1, "123456789", 1234);
 	}
 
-	@GetMapping("/")
+	@RequestMapping("/")
 	@PreAuthorize("#oauth2.hasScope('read')")
 	public List<Account> findAccounts() {
 		System.out.println("FindAccounts success");

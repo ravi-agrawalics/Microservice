@@ -1,10 +1,11 @@
 package pl.piomin.microservices.customer.feignClient;
 
+//import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -12,10 +13,13 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
+
+
+
 @Component
 public class FeignInterceptor implements RequestInterceptor {
-    @Autowired
-    private OAuth2ClientContext context;
+    //@Autowired
+    //private OAuth2ClientContext context;
 
 /*    @Override
     public void apply(RequestTemplate template) {
